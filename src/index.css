@@ -1,0 +1,393 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design System for PixelCraft Agency - Modern Blue/Purple Gradient Theme */
+
+@layer base {
+  :root {
+    /* Base Colors - HSL format */
+    --background: 0 0% 100%;
+    --foreground: 225 15% 20%;
+
+    /* Brand Colors */
+    --primary: 224 76% 48%;        /* Rich blue */
+    --primary-foreground: 0 0% 98%;
+    --primary-dark: 224 100% 35%;   /* Deeper blue */
+    --primary-light: 224 50% 75%;   /* Lighter blue */
+
+    --secondary: 262 83% 58%;       /* Rich purple */
+    --secondary-foreground: 0 0% 98%;
+    --secondary-dark: 262 100% 45%; /* Deeper purple */
+    --secondary-light: 262 50% 80%; /* Lighter purple */
+
+    /* Neutral Colors */
+    --accent: 217 32% 17%;          /* Dark blue-gray */
+    --accent-foreground: 0 0% 98%;
+    --muted: 220 14% 96%;          /* Light gray */
+    --muted-foreground: 215 16% 47%;
+
+    /* UI Colors */
+    --card: 0 0% 100%;
+    --card-foreground: 225 15% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 225 15% 20%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 224 76% 48%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Design System Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(224, 76%, 48%), hsl(262, 83%, 58%));
+    --gradient-secondary: linear-gradient(135deg, hsl(262, 83%, 58%), hsl(290, 85%, 65%));
+    --gradient-hero: linear-gradient(135deg, hsl(224, 100%, 35%) 0%, hsl(262, 100%, 45%) 50%, hsl(290, 85%, 65%) 100%);
+    --gradient-subtle: linear-gradient(135deg, hsl(224, 50%, 98%) 0%, hsl(262, 30%, 98%) 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(224, 76%, 48%, 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(224, 76%, 48%, 0.1), 0 2px 4px -1px hsl(224, 76%, 48%, 0.06);
+    --shadow-lg: 0 10px 15px -3px hsl(224, 76%, 48%, 0.1), 0 4px 6px -2px hsl(224, 76%, 48%, 0.05);
+    --shadow-xl: 0 20px 25px -5px hsl(224, 76%, 48%, 0.1), 0 10px 10px -5px hsl(224, 76%, 48%, 0.04);
+    --shadow-glow: 0 0 0 1px hsl(224, 76%, 48%, 0.05), 0 1px 0 hsl(224, 76%, 48%, 0.05), 0 0 8px hsl(224, 76%, 48%, 0.15);
+
+    /* Typography */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+    /* Spacing & Layout */
+    --radius: 0.75rem;
+    --section-padding: 5rem 0;
+
+    /* Animation */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .dark {
+    --background: 225 15% 8%;
+    --foreground: 0 0% 98%;
+    --card: 225 15% 10%;
+    --card-foreground: 0 0% 98%;
+    --popover: 225 15% 10%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 224 50% 75%;
+    --primary-foreground: 225 15% 8%;
+    --secondary: 262 50% 80%;
+    --secondary-foreground: 225 15% 8%;
+    --muted: 217 32% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 217 32% 17%;
+    --accent-foreground: 0 0% 98%;
+    --border: 217 32% 17%;
+    --input: 217 32% 17%;
+    --ring: 224 50% 75%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary-dark));
+  }
+}
+
+/* Component Base Styles */
+@layer components {
+  /* Hero gradient background */
+  .hero-gradient {
+    background: var(--gradient-hero);
+    position: relative;
+  }
+  
+  .hero-gradient::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='7' cy='7' r='7'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+    pointer-events: none;
+  }
+
+  /* Glass morphism effect */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* Service card hover animation */
+  .service-card {
+    transition: var(--transition-smooth);
+    @apply hover:scale-105 hover:shadow-xl;
+  }
+
+  /* Portfolio grid item hover */
+  .portfolio-item {
+    transition: var(--transition-smooth);
+    @apply hover:scale-105 hover:shadow-2xl;
+  }
+
+  .portfolio-overlay {
+    background: linear-gradient(135deg, hsl(224, 76%, 48%, 0.9), hsl(262, 83%, 58%, 0.9));
+    transition: var(--transition-smooth);
+    @apply opacity-0 hover:opacity-100;
+  }
+
+  /* Smooth underline animation */
+  .nav-link {
+    position: relative;
+  }
+  
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background: var(--gradient-primary);
+    transition: var(--transition-smooth);
+  }
+  
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  /* Button animations */
+  .btn-primary {
+    background: var(--gradient-primary);
+    transition: var(--transition-bounce);
+    @apply hover:scale-105 hover:shadow-lg;
+  }
+
+  .btn-secondary {
+    background: transparent;
+    border: 2px solid hsl(var(--primary));
+    transition: var(--transition-smooth);
+    @apply hover:bg-primary hover:text-primary-foreground;
+  }
+
+  /* Gradient Button Styles - Customized for PixelCraft Theme */
+  @property --pos-x {
+    syntax: '<percentage>';
+    initial-value: 11.14%;
+    inherits: false;
+  }
+
+  @property --pos-y {
+    syntax: '<percentage>';
+    initial-value: 140%;
+    inherits: false;
+  }
+
+  @property --spread-x {
+    syntax: '<percentage>';
+    initial-value: 150%;
+    inherits: false;
+  }
+
+  @property --spread-y {
+    syntax: '<percentage>';
+    initial-value: 180.06%;
+    inherits: false;
+  }
+
+  @property --color-1 {
+    syntax: '<color>';
+    initial-value: #1e40af; /* blue-800 */
+    inherits: false;
+  }
+
+  @property --color-2 {
+    syntax: '<color>';
+    initial-value: #3b82f6; /* blue-500 */
+    inherits: false;
+  }
+
+  @property --color-3 {
+    syntax: '<color>';
+    initial-value: #6366f1; /* indigo-500 */
+    inherits: false;
+  }
+
+  @property --color-4 {
+    syntax: '<color>';
+    initial-value: #8b5cf6; /* violet-500 */
+    inherits: false;
+  }
+
+  @property --color-5 {
+    syntax: '<color>';
+    initial-value: #a855f7; /* purple-500 */
+    inherits: false;
+  }
+
+  @property --border-angle {
+    syntax: '<angle>';
+    initial-value: 20deg;
+    inherits: true;
+  }
+
+  @property --border-color-1 {
+    syntax: '<color>';
+    initial-value: hsla(224, 76%, 48%, 0.2);
+    inherits: true;
+  }
+
+  @property --border-color-2 {
+    syntax: '<color>';
+    initial-value: hsla(262, 83%, 58%, 0.75);
+    inherits: true;
+  }
+
+  @property --stop-1 {
+    syntax: '<percentage>';
+    initial-value: 37.35%;
+    inherits: false;
+  }
+
+  @property --stop-2 {
+    syntax: '<percentage>';
+    initial-value: 61.36%;
+    inherits: false;
+  }
+
+  @property --stop-3 {
+    syntax: '<percentage>';
+    initial-value: 78.42%;
+    inherits: false;
+  }
+
+  @property --stop-4 {
+    syntax: '<percentage>';
+    initial-value: 89.52%;
+    inherits: false;
+  }
+
+  @property --stop-5 {
+    syntax: '<percentage>';
+    initial-value: 100%;
+    inherits: false;
+  }
+
+  .gradient-button {
+    @apply relative appearance-none cursor-pointer;
+    background: radial-gradient(
+      var(--spread-x) var(--spread-y) at var(--pos-x) var(--pos-y),
+      var(--color-1) var(--stop-1),
+      var(--color-2) var(--stop-2),
+      var(--color-3) var(--stop-3),
+      var(--color-4) var(--stop-4),
+      var(--color-5) var(--stop-5)
+    );
+    transition:
+      --pos-x 0.5s,
+      --pos-y 0.5s,
+      --spread-x 0.5s,
+      --spread-y 0.5s,
+      --color-1 0.5s,
+      --color-2 0.5s,
+      --color-3 0.5s,
+      --color-4 0.5s,
+      --color-5 0.5s,
+      --border-angle 0.5s,
+      --border-color-1 0.5s,
+      --border-color-2 0.5s,
+      --stop-1 0.5s,
+      --stop-2 0.5s,
+      --stop-3 0.5s,
+      --stop-4 0.5s,
+      --stop-5 0.5s;
+  }
+
+  .gradient-button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      var(--border-angle),
+      var(--border-color-1),
+      var(--border-color-2)
+    );
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .gradient-button:hover {
+    --pos-x: 0%;
+    --pos-y: 91.51%;
+    --spread-x: 120.24%;
+    --spread-y: 103.18%;
+    --color-1: #60a5fa; /* blue-400 */
+    --color-2: #3b82f6; /* blue-500 */
+    --color-3: #6366f1; /* indigo-500 */
+    --color-4: #8b5cf6; /* violet-500 */
+    --color-5: #a855f7; /* purple-500 */
+    --border-angle: 190deg;
+    --border-color-1: hsla(224, 76%, 48%, 0.1);
+    --border-color-2: hsla(262, 83%, 58%, 0.6);
+    --stop-1: 0%;
+    --stop-2: 8.8%;
+    --stop-3: 21.44%;
+    --stop-4: 71.34%;
+    --stop-5: 85.76%;
+  }
+
+  .gradient-button-variant {
+    --color-1: #1e3a8a; /* blue-900 */
+    --color-2: #3b82f6; /* blue-500 */
+    --color-3: #6366f1; /* indigo-500 */
+    --color-4: #8b5cf6; /* violet-500 */
+    --border-angle: 200deg;
+    --border-color-1: hsla(224, 76%, 48%, 0.6);
+    --border-color-2: hsla(262, 83%, 58%, 0.15);
+  }
+
+  .gradient-button-variant:hover {
+    --pos-x: 0%;
+    --pos-y: 95.51%;
+    --spread-x: 110.24%;
+    --spread-y: 110.2%;
+    --color-1: #1e40af; /* blue-800 */
+    --color-2: #60a5fa; /* blue-400 */
+    --color-3: #6366f1; /* indigo-500 */
+    --color-4: #3b82f6; /* blue-500 */
+    --color-5: #1e3a8a; /* blue-900 */
+    --stop-1: 0%;
+    --stop-2: 10%;
+    --stop-3: 35.44%;
+    --stop-4: 71.34%;
+    --stop-5: 90.76%;
+    --border-angle: 210deg;
+    --border-color-1: hsla(224, 76%, 48%, 0.2);
+    --border-color-2: hsla(262, 83%, 58%, 0.75);
+  }
+}
